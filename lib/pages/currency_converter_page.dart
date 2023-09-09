@@ -10,7 +10,7 @@ class CurrencyConverterMain extends StatelessWidget {
         appBar: AppBar(
             title: const Text("Currency converter"),
             backgroundColor: Colors.blueGrey[900]),
-        body: const ColoredBox(
+        body: ColoredBox(
           color: Colors.blueGrey,
           child: Center(
             child: Column(
@@ -23,18 +23,52 @@ class CurrencyConverterMain extends StatelessWidget {
                 //       color: Colors.white,
                 //       fontWeight: FontWeight.w500),
                 // ),
-                TextField(
-                  autofocus: true,
-                  decoration: InputDecoration(
-                    label: Text(
-                      "Please enter an amount",
-                      style: TextStyle(
-                        color: Colors.white,
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: TextField(
+                    style: TextStyle(color: Colors.white),
+                    autofocus: true,
+                    keyboardType: TextInputType.numberWithOptions(
+                        decimal: true, signed: true),
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.monetization_on),
+                      prefixIconColor: Colors.white,
+                      label: Text(
+                        "Amount in USD",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(10),
+                        ),
                       ),
                     ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.zero),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      debugPrint('button clicked');
+                    },
+                    style: const ButtonStyle(
+                      alignment: Alignment.center,
+                      backgroundColor: MaterialStatePropertyAll(Colors.blue),
+                      foregroundColor: MaterialStatePropertyAll(Colors.white),
+                      fixedSize: MaterialStatePropertyAll(
+                        Size(double.maxFinite, 50),
+                      ),
+                      shape: MaterialStatePropertyAll(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10),
+                          ),
+                        ),
+                      ),
                     ),
+                    child: const Text("Convert"),
                   ),
                 ),
               ],
